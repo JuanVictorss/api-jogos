@@ -14,6 +14,15 @@ app.get("/api/jogos", (req, res) => {
   res.json(jogos);
 });
 
+app.post("/api/jogos", (req, res) => {
+  const novoJogo = {
+    id: jogos.length + 1,
+    nome: req.body.nome,
+  };
+  jogos.push(novoJogo);
+  res.status(201).json(novoJogo);
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
