@@ -17,3 +17,6 @@ Esta é uma API REST simples para gerenciar uma lista de jogos.
 ## Rotas
 
 - **GET /api/jogos**: Retorna a lista de todos os jogos.
+
+* **POST /api/jogos**: Adiciona um novo jogo.
+  - **Body (JSON):** `{ "nome": "Nome do Jogo" }`
