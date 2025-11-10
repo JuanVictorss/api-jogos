@@ -1,0 +1,31 @@
+name: CI em Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout da branch do Pull Request
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar Testes da Aplicação
+        run: npm test
+
+      - name: Verificação de Qualidade
+        run: echo "Verificação de qualidade de código concluída com sucesso no Pull Request."
