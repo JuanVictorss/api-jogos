@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const PORT = 8080;
 
 app.use(express.json());
 
@@ -23,6 +22,4 @@ app.post("/api/jogos", (req, res) => {
   res.status(201).json(novoJogo);
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+module.exports = app;
