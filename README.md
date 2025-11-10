@@ -25,6 +25,13 @@ Github Flow. Este fluxo de trabalho é ideal por sua simplicidade e agilidade, s
 * **POST /api/jogos**: Adiciona um novo jogo.
   - **Body (JSON):** `{ "nome": "Nome do Jogo" }`
 
+## Integração Contínua (CI) e Testes
+
+A aplicação utiliza **GitHub Actions** para garantir a qualidade do código através de fluxos de trabalho que executam testes em eventos de Pull Request e Push para a `main`.
+
+- **CI em Pull Request:** Garante que a nova feature passe nos testes antes de ser mesclada.
+- **CI em Push:** Confirma a estabilidade final do código na branch principal.
+
 **Para rodar os testes localmente:**
 
 ```bash
