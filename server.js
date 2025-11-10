@@ -1,6 +1,6 @@
-const app = require("./index");
-const PORT = 8080;
+const app = require('./index')
+const PORT = 8080
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+  console.log(`Servidor rodando em http://localhost:${PORT}`)
+})
