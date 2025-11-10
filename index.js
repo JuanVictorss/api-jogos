@@ -22,4 +22,16 @@ app.post("/api/jogos", (req, res) => {
   res.status(201).json(novoJogo);
 });
 
+app.delete("/api/jogos/:id", (req, res) => {
+  const idParaRemover = parseInt(req.params.id);
+  const index = jogos.findIndex((jogo) => jogo.id === idParaRemover);
+
+  if (index === -1) {
+    return res.status(404).send();
+  }
+
+  jogos.splice(index, 1);
+  res.status(204).send();
+});
+
 module.exports = app;
