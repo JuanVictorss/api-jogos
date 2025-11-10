@@ -14,7 +14,7 @@ Github Flow. Este fluxo de trabalho é ideal por sua simplicidade e agilidade, s
     ```
 2.  Inicie o servidor:
     ```bash
-    node index.js
+    node server.js
     ```
 3.  A API estará disponível em `http://localhost:8080`.
 
@@ -24,3 +24,9 @@ Github Flow. Este fluxo de trabalho é ideal por sua simplicidade e agilidade, s
 
 * **POST /api/jogos**: Adiciona um novo jogo.
   - **Body (JSON):** `{ "nome": "Nome do Jogo" }`
+
+**Para rodar os testes localmente:**
+
+```bash
+npm test
+```
