@@ -22,5 +22,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Executar Testes da Aplicação
+      - name: Executar Verificação de Estilo (Lint)
+        run: npm run lint
+
+      - name: Executar Testes da Aplicação(Falha se a cobertura for menor que 90%)
         run: npm test
