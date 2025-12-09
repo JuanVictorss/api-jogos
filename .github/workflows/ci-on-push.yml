@@ -9,21 +9,38 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-
       - name: Instalar dependências
         run: npm install
-
-      - name: Executar Verificação de Estilo (Lint)
+      - name: Executar Lint
         run: npm run lint
-
-      - name: Executar Testes da Aplicação(Falha se a cobertura for menor que 90%)
+      - name: Executar Testes
         run: npm test
+
+  docker-build-push:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build e Push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/api-jogos:latest
+            ${{ secrets.DOCKER_USERNAME }}/api-jogos:${{ github.sha }}
