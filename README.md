@@ -1,5 +1,8 @@
 # API de Jogos
 
+[![Docker Pulls](https://badgen.net/docker/pulls/juanvictorss/api-jogos?icon=docker&label=pulls)](https://hub.docker.com/r/juanvictorss/api-jogos)
+[![Docker Image Size](https://badgen.net/docker/size/juanvictorss/api-jogos?icon=docker&label=image%20size)](https://hub.docker.com/r/juanvictorss/api-jogos)
+
 Esta é uma API REST simples para gerenciar uma lista de jogos.
 
 # Workflow Utilizado
