@@ -1,0 +1,33 @@
+---
+- name: Configurar Servidor e Deploy da API Jogos
+  hosts: all
+  become: yes  
+  
+  tasks:
+    - name: Atualizar o cache do apt
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Instalar Docker e dependências
+      apt:
+        name: 
+          - docker.io
+          - python3-docker
+        state: present
+
+    - name: Garantir que o serviço do Docker esteja rodando
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Rodar o container da API Jogos
+      docker_container:
+        name: api-jogos
+        image: juanvictorss/api-jogos:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8080:8080"
+        pull: yes
